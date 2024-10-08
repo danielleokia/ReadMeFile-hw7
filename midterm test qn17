@@ -1,0 +1,117 @@
+{
+  "nbformat": 4,
+  "nbformat_minor": 0,
+  "metadata": {
+    "colab": {
+      "provenance": [],
+      "authorship_tag": "ABX9TyNULYp59MddAjpKyqDLjA2+",
+      "include_colab_link": true
+    },
+    "kernelspec": {
+      "name": "python3",
+      "display_name": "Python 3"
+    },
+    "language_info": {
+      "name": "python"
+    }
+  },
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "view-in-github",
+        "colab_type": "text"
+      },
+      "source": [
+        "<a href=\"https://colab.research.google.com/github/danielleokia/ReadMeFile-hw7/blob/main/midterm%20test%20qn17\" target=\"_parent\"><img src=\"https://colab.research.google.com/assets/colab-badge.svg\" alt=\"Open In Colab\"/></a>"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 4,
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "rWNEgUTOhCvT",
+        "outputId": "f17e2215-2266-4a96-95c8-eea01139f324"
+      },
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Would you like a card? Y or NY\n",
+            "Your card: 4\n",
+            "Your hand: 4\n",
+            "Your card:\n",
+            "Your hand: 4\n",
+            "Good try!\n",
+            "Would you like a card? Y or NY\n",
+            "Your card: 11\n",
+            "Your hand: 15\n",
+            "Your card:\n",
+            "Your hand: 15\n",
+            "Good try!\n",
+            "Would you like a card? Y or NY\n",
+            "Your card: 6\n",
+            "Your hand: 21\n",
+            "Your card:\n",
+            "Your hand: 21\n",
+            "You win!\n"
+          ]
+        }
+      ],
+      "source": [
+        "##MIDTERM TEST No 17\n",
+        "import random\n",
+        "def get_card():\n",
+        "    card = random.randint(2, 11)\n",
+        "    return card\n",
+        "\n",
+        "\n",
+        "sum = 0\n",
+        "ace_count = 0\n",
+        "# Start here: keep asking for cards until\n",
+        "\n",
+        "# one of the two given conditions is met.\n",
+        "# Add to the following code to finish up\n",
+        "# your script.\n",
+        "while True:\n",
+        "  user_response = input(\"Would you like a card? Y or N \")\n",
+        "  if user_response == \"Y\":\n",
+        "      card = get_card()\n",
+        "          ## checking if card is an ace\n",
+        "      if card == 11:\n",
+        "        ace_count = ace_count + 1\n",
+        "\n",
+        "      sum = sum + card\n",
+        "      print(\"Your card:\", card)\n",
+        "      print(\"Your hand:\", sum)\n",
+        "  ## if new card is an ace and the sum is greater than 21, assign ace value to 1 instead of 11\n",
+        "      while sum > 21 and card == 11:\n",
+        "        sum = sum - 10\n",
+        "        ace_count = ace_count - 1\n",
+        "      print(\"Your card:\", card)\n",
+        "      print(\"Your hand:\", sum)\n",
+        "  ## if sum is 21 the user wins & game ends\n",
+        "      if sum == 21:\n",
+        "        print('You win!')\n",
+        "        break\n",
+        "  ## if sum is greater than 21 the game ends\n",
+        "      elif sum > 21:\n",
+        "        print('Broke!')\n",
+        "        break\n",
+        "\n",
+        "      else:\n",
+        "        print('Good try!')\n",
+        "  ## if user input N the game ends and the sum of final hand is printed\n",
+        "  elif user_response == \"N\":\n",
+        "    print (\"Good job, your final hand\", sum)\n",
+        "\n",
+        "  else:\n",
+        "    print(\"Please enter Y or N\")"
+      ]
+    }
+  ]
+}
